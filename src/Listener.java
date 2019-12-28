@@ -7,8 +7,8 @@ public class Listener implements ActionListener {
 
     Container contentPane;
     private static boolean allowFurtherAction = true;
-    protected static float firstExpression = 0;
-    protected static float secondExpression = 0;
+    static float firstExpression = 0;
+    static float secondExpression = 0;
     private Calculator calculator = new Calculator();
     private static int operation = -1;
 
@@ -23,7 +23,7 @@ public class Listener implements ActionListener {
             allowFurtherAction = false;
             firstExpression = Float.parseFloat(GUI.display.getText());
             GUI.display.setText("");
-            this.operation = operation;
+            Listener.operation = operation;
         }
     }
     @Override
@@ -60,7 +60,7 @@ public class Listener implements ActionListener {
                         calculator.mul();
                         break;
                     default:
-
+                        System.out.println("ERROR");
                         break;
 
                 }
@@ -70,12 +70,24 @@ public class Listener implements ActionListener {
                 GUI.display.setText("");
                 break;
             case "del":
-                String display = GUI.display.getText();
-                display.substring(0, display.length()-1);
-                GUI.display.setText(display);
+                try {
+                    String display = GUI.display.getText();
+                    display = display.substring(0, display.length() - 1);
+                    GUI.display.setText(display);
+                } catch (IndexOutOfBoundsException e) {
+                    e.printStackTrace();
+                    GUI.display.setText("0");
+                }
                 break;
             case "percent":
-                GUI.display.setText(GUI.display.getText() + "%");
+                firstExpression = Float.parseFloat(GUI.display.getText())/100;
+                GUI.display.setText(String.valueOf(firstExpression));
+                break;
+
+            case "point":
+                if (!GUI.display.getText().contains(".")) {
+                    GUI.display.setText(GUI.display.getText() + ".");
+                }
                 break;
 
 
