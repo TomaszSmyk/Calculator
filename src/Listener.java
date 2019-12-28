@@ -53,6 +53,12 @@ public class Listener implements ActionListener {
                     case 1:
                         calculator.sub();
                         break;
+                    case 2:
+                        calculator.div();
+                        break;
+                    case 3:
+                        calculator.mul();
+                        break;
                     default:
 
                         break;
@@ -70,8 +76,9 @@ public class Listener implements ActionListener {
                 break;
             case "percent":
                 GUI.display.setText(GUI.display.getText() + "%");
-
                 break;
+
+
             case "9":
                 GUI.display.setText(GUI.display.getText() + "9");
                 break;
