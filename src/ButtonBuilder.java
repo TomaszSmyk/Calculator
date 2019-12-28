@@ -11,6 +11,7 @@ public class ButtonBuilder {
     private final int gridX;
     private final int gridY;
     private Listener listener;
+    private KeyboardListener keyboardListener;
 
     public static class Builder {
         //required params
@@ -70,6 +71,7 @@ public class ButtonBuilder {
         gridX           = builder.gridX;
         gridY           = builder.gridY;
         listener = new Listener(contentPane);
+        keyboardListener = new KeyboardListener();
         createButton();
     }
 
@@ -81,6 +83,7 @@ public class ButtonBuilder {
         button.setSize(new Dimension(width, height));
         button.setActionCommand(command);
         button.addActionListener(this.listener);
+        button.addKeyListener(keyboardListener);
         contentPane.add(button, gbc);
     }
 }

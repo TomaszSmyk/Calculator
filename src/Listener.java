@@ -9,7 +9,7 @@ public class Listener implements ActionListener {
     private static boolean allowFurtherAction = true;
     static float firstExpression = 0;
     static float secondExpression = 0;
-    private Calculator calculator = new Calculator();
+    private static Calculator calculator = new Calculator();
     private static int operation = -1;
 
 
@@ -18,12 +18,33 @@ public class Listener implements ActionListener {
         this.contentPane = contentPane;
     }
 
-    private void action(int operation) {
+    protected static void action(int operation) {
         if(allowFurtherAction) {
             allowFurtherAction = false;
             firstExpression = Float.parseFloat(GUI.display.getText());
             GUI.display.setText("");
             Listener.operation = operation;
+        }
+    }
+    protected static void equals() {
+        secondExpression = Float.parseFloat(GUI.display.getText());
+        switch (operation) {
+            case 0:
+                calculator.add();
+                break;
+            case 1:
+                calculator.sub();
+                break;
+            case 2:
+                calculator.div();
+                break;
+            case 3:
+                calculator.mul();
+                break;
+            default:
+                System.out.println("ERROR");
+                break;
+
         }
     }
     @Override
@@ -45,26 +66,7 @@ public class Listener implements ActionListener {
                 break;
             case "equal":
                 allowFurtherAction = true;
-                secondExpression = Float.parseFloat(GUI.display.getText());
-                switch (operation) {
-                    case 0:
-                        calculator.add();
-                        break;
-                    case 1:
-                        calculator.sub();
-                        break;
-                    case 2:
-                        calculator.div();
-                        break;
-                    case 3:
-                        calculator.mul();
-                        break;
-                    default:
-                        System.out.println("ERROR");
-                        break;
-
-                }
-
+                equals();
                 break;
             case "ac":
                 GUI.display.setText("");

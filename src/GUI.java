@@ -17,6 +17,11 @@ public class GUI {
         gbc.fill = GridBagConstraints.HORIZONTAL;
 
         gbc.gridwidth = 4;//makes text field span 3 cells
+        display.setEditable(false);
+        display.setBackground(Color.WHITE);
+        display.addKeyListener(new KeyboardListener());
+        Font font = new Font("Verdana", Font.BOLD, 25);
+        display.setFont(font);
         contentPane.add(display,gbc);
 
         gbc.fill = GridBagConstraints.BOTH;
