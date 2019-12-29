@@ -5,52 +5,54 @@ import static java.awt.event.KeyEvent.*;
 
 public class KeyboardListener implements KeyListener {
     @Override
-    public void keyTyped(KeyEvent keyEvent) {
-        //key(keyEvent);
-    }
-
+    public void keyTyped(KeyEvent keyEvent) {}
+    
+    //listener - in case key is pressed invoke event
     @Override
     public void keyPressed(KeyEvent keyEvent) {
         key(keyEvent);
     }
 
     @Override
-    public void keyReleased(KeyEvent keyEvent) {
-        //key(keyEvent);
-    }
+    public void keyReleased(KeyEvent keyEvent) {}
 
+    /**
+     * method supporting keyboard listener
+     * @param keyEvent - pass to support each one of pressed keys
+     */
     private void key(KeyEvent keyEvent) {
         int key = keyEvent.getKeyCode();
+        //'+' key
         if (key == VK_ADD) {
             Listener.action(0);
         }
+        //'-' key
         else if (key == VK_SUBTRACT || key == VK_MINUS) {
             Listener.action(1);
         }
+        //'/' key
         else if(key == VK_SLASH || key == VK_BACK_SLASH || key == VK_DIVIDE) {
             Listener.action(2);
         }
+        //'*' key
         else if(key == VK_ASTERISK || key == VK_MULTIPLY) {
             Listener.action(3);
         }
+        //'=' key and enter key
         else if(key == VK_EQUALS || key == VK_ENTER) {
             Listener.equals();
         }
+        //backspace key
         else if(key == VK_BACK_SPACE) {
-            try {
-                String display = GUI.display.getText();
-                display = display.substring(0, display.length() - 1);
-                GUI.display.setText(display);
-            } catch (IndexOutOfBoundsException e) {
-                e.printStackTrace();
-                GUI.display.setText("0");
-            }
+            Listener.delete();
         }
+        //'.' key
         else if (key == VK_PERIOD || key == VK_DECIMAL) {
             if (!GUI.display.getText().contains(".")) {
                 GUI.display.setText(GUI.display.getText() + ".");
             }
         }
+        //numeric keys
         else if(key == VK_0 || key == VK_NUMPAD0) {
             GUI.display.setText(GUI.display.getText() + "0");
         }

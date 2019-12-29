@@ -1,6 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
-
+//builder class to create buttons
 public class ButtonBuilder {
     private final Container contentPane;
     private final GridBagConstraints gbc;
@@ -70,6 +70,7 @@ public class ButtonBuilder {
         width           = builder.width;
         gridX           = builder.gridX;
         gridY           = builder.gridY;
+        //initialize listeners
         listener = new Listener(contentPane);
         keyboardListener = new KeyboardListener();
         createButton();

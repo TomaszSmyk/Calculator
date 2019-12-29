@@ -6,18 +6,24 @@ import java.awt.event.ActionListener;
 public class Listener implements ActionListener {
 
     Container contentPane;
+    //after pressing +, -, / or * it will be impossible to press it again
     private static boolean allowFurtherAction = true;
+    //following variables will store display content
     static float firstExpression = 0;
     static float secondExpression = 0;
+    //static initialization of Calculator class
     private static Calculator calculator = new Calculator();
+    //will inform listener which function activate from Calculator.java
     private static int operation = -1;
-
-
 
     public Listener(Container contentPane) {
         this.contentPane = contentPane;
     }
 
+    /**
+     * Static method servicing add, sub, div and mul functions
+     * @param operation - passed to set static variable operation
+     */
     protected static void action(int operation) {
         if(allowFurtherAction) {
             allowFurtherAction = false;
@@ -26,6 +32,10 @@ public class Listener implements ActionListener {
             Listener.operation = operation;
         }
     }
+
+    /**
+     * Static method to support listener after pressing or clicking '=' sign
+     */
     protected static void equals() {
         allowFurtherAction = true;
         secondExpression = Float.parseFloat(GUI.display.getText());
@@ -48,21 +58,40 @@ public class Listener implements ActionListener {
 
         }
     }
+
+    /**
+     * Static method to support backspace key and delete button
+     */
+    protected static void delete() {
+        try {
+            String display = GUI.display.getText();
+            display = display.substring(0, display.length() - 1);
+            GUI.display.setText(display);
+        } catch (IndexOutOfBoundsException e) {
+            e.printStackTrace();
+            GUI.display.setText("0");
+        }
+    }
+
+    /**
+     * Action listener, after clicking buttons do certain actions
+     * @param actionEvent - event derived from button pressing
+     */
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         String action = actionEvent.getActionCommand();
         switch (action) {
-            //functional
-            case "add"://0
+            //functional buttons
+            case "add"://no.0
                 action(0);
                 break;
-            case "sub"://1
+            case "sub"://no.1
                 action(1);
                 break;
-            case "div"://2
+            case "div"://no.2
                 action(2);
                 break;
-            case "mul"://3
+            case "mul"://no.3
                 action(3);
                 break;
             case "equal":
@@ -72,14 +101,7 @@ public class Listener implements ActionListener {
                 GUI.display.setText("");
                 break;
             case "del":
-                try {
-                    String display = GUI.display.getText();
-                    display = display.substring(0, display.length() - 1);
-                    GUI.display.setText(display);
-                } catch (IndexOutOfBoundsException e) {
-                    e.printStackTrace();
-                    GUI.display.setText("0");
-                }
+                delete();
                 break;
             case "percent":
                 firstExpression = Float.parseFloat(GUI.display.getText())/100;
@@ -91,8 +113,7 @@ public class Listener implements ActionListener {
                     GUI.display.setText(GUI.display.getText() + ".");
                 }
                 break;
-
-
+            //number buttons
             case "9":
                 GUI.display.setText(GUI.display.getText() + "9");
                 break;

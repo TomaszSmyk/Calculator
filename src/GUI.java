@@ -33,6 +33,7 @@ public class GUI {
         display.setFont(font);
         display.setBackground(new Color(127,127,156));
         display.setOpaque(false);
+        //add textfield to pane
         contentPane.add(display,gbc);
 
         gbc.fill = GridBagConstraints.BOTH;
