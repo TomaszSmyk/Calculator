@@ -9,24 +9,36 @@ public class GUI {
 
     public GUI(Container contentPane) {
         this.contentPane = contentPane;
+        //set pane color
+        contentPane.setBackground(new Color(127,127,156));
+        //set up all components - buttons and display,
         setupButtons();
     }
     private void setupButtons() {
+        //all components have same weight so each one of them will have same size...
         gbc.weightx = 1;
         gbc.weighty = 1;
+        //...and will spread up and down evenly
         gbc.fill = GridBagConstraints.HORIZONTAL;
 
         gbc.gridwidth = 4;//makes text field span 3 cells
+        //make it not editable in case user wants to change cursor position
         display.setEditable(false);
+        //this will change this gray color of uneditable components back to black
         display.setBackground(Color.WHITE);
+        //add keyboard listener
         display.addKeyListener(new KeyboardListener());
-        Font font = new Font("Verdana", Font.BOLD, 25);
+        //set display's text size and color
+        Font font = new Font("Verdana", Font.BOLD, 40);
         display.setFont(font);
+        display.setBackground(new Color(127,127,156));
+        display.setOpaque(false);
         contentPane.add(display,gbc);
 
         gbc.fill = GridBagConstraints.BOTH;
         gbc.gridwidth = 1;//return to default
         /********************************************
+         *    DESIGN:
          *            x 0  1 2 3
          *         y   ----------
          *         0 |  /display/
@@ -37,10 +49,10 @@ public class GUI {
          *         5 |     0 . =
          *
          ********************************************/
-        //Functional buttons
+        //Functional buttons declaration
         new ButtonBuilder.Builder(contentPane, gbc).name("AC").command("ac").
                 height(100).width(100).gridX(0).gridY(1).build();
-        new ButtonBuilder.Builder(contentPane, gbc).name("<").command("del").
+        new ButtonBuilder.Builder(contentPane, gbc).name("< ").command("del").
                 height(100).width(100).gridX(1).gridY(1).build();
         new ButtonBuilder.Builder(contentPane, gbc).name("%").command("percent").
                 height(100).width(100).gridX(2).gridY(1).build();
@@ -54,10 +66,10 @@ public class GUI {
                 height(100).width(100).gridX(3).gridY(4).build();
         new ButtonBuilder.Builder(contentPane, gbc).name(".").command("point").
                 height(100).width(100).gridX(2).gridY(5).build();
-        new ButtonBuilder.Builder(contentPane, gbc).name("=").command("equal").
+        new ButtonBuilder.Builder(contentPane, gbc).name("= ").command("equal").
                 height(100).width(100).gridX(3).gridY(5).build();
 
-        //Number buttons
+        //Number buttons declaration
         new ButtonBuilder.Builder(contentPane, gbc).name("0").command("0").
                 height(100).width(100).gridX(1).gridY(5).build();
         new ButtonBuilder.Builder(contentPane, gbc).name("1").command("1").
@@ -79,8 +91,6 @@ public class GUI {
         new ButtonBuilder.Builder(contentPane, gbc).name("9").command("9").
                 height(100).width(100).gridX(2).gridY(2).build();
 
-
-        listener = new Listener(contentPane);
     }
 
 }

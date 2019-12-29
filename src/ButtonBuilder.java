@@ -76,14 +76,30 @@ public class ButtonBuilder {
     }
 
     private void createButton() {
+        //declare and initialize button
         JButton button = new JButton(this.name);
+        //set position i grid bag layout
         gbc.gridx = gridX;
         gbc.gridy = gridY;
+        //set text on button and its size
         button.setName(name);
-        button.setSize(new Dimension(width, height));
+        Font font = new Font("Verdana", Font.BOLD, 30);
+        button.setFont(font);
+        //button.setSize(new Dimension(width, height));
+
+        //set action command to make it easier to write event listener
         button.setActionCommand(command);
+
+        //add button and keyboard listeners
         button.addActionListener(this.listener);
         button.addKeyListener(keyboardListener);
+
+        //makes button transparent, pane will be colored, so no need to color buttons
+        button.setOpaque(false);
+        button.setContentAreaFilled(false);
+        //button.setBorderPainted(false);
+
+        //add button to pane
         contentPane.add(button, gbc);
     }
 }

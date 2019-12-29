@@ -2,8 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Window {
-    private static final int windowHeight = 500;
-    private static final int windowWidth  = 300;
+    private static final int windowHeight = 550;
+    private static final int windowWidth  = 350;
     Window() {
 
 
@@ -14,12 +14,13 @@ public class Window {
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainFrame.setSize(new Dimension(windowWidth, windowHeight));
         mainFrame.setLocationRelativeTo(null);
+
+
         Container contentPane = mainFrame.getContentPane();
         contentPane.setLayout(new GridBagLayout());
-        GUI gui = new GUI(contentPane);
+        new GUI(contentPane);
 
-        //size the window so all its contents are at or above their preferred sizes
-        //mainFrame.pack();
+
         //show the window
         mainFrame.setVisible(true);
     }
