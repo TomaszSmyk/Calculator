@@ -24,13 +24,13 @@ public class KeyboardListener implements KeyListener {
         if (key == VK_ADD) {
             Listener.action(0);
         }
-        else if (key == VK_SUBTRACT) {
+        else if (key == VK_SUBTRACT || key == VK_MINUS) {
             Listener.action(1);
         }
-        else if(key == VK_SLASH || key == VK_BACK_SLASH) {
+        else if(key == VK_SLASH || key == VK_BACK_SLASH || key == VK_DIVIDE) {
             Listener.action(2);
         }
-        else if(key == VK_ASTERISK ) {
+        else if(key == VK_ASTERISK || key == VK_MULTIPLY) {
             Listener.action(3);
         }
         else if(key == VK_EQUALS || key == VK_ENTER) {
@@ -51,34 +51,34 @@ public class KeyboardListener implements KeyListener {
                 GUI.display.setText(GUI.display.getText() + ".");
             }
         }
-        else if(key == VK_0) {
+        else if(key == VK_0 || key == VK_NUMPAD0) {
             GUI.display.setText(GUI.display.getText() + "0");
         }
-        else if (key == VK_1) {
+        else if (key == VK_1 || key == VK_NUMPAD1) {
             GUI.display.setText(GUI.display.getText() + "1");
         }
-        else if (key == VK_2) {
+        else if (key == VK_2 || key == VK_NUMPAD2) {
             GUI.display.setText(GUI.display.getText() + "2");
         }
-        else if (key == VK_3) {
+        else if (key == VK_3 || key == VK_NUMPAD3) {
             GUI.display.setText(GUI.display.getText() + "3");
         }
-        else if (key == VK_4) {
+        else if (key == VK_4 || key == VK_NUMPAD4) {
             GUI.display.setText(GUI.display.getText() + "4");
         }
-        else if (key == VK_5) {
+        else if (key == VK_5 || key == VK_NUMPAD5) {
             GUI.display.setText(GUI.display.getText() + "5");
         }
-        else if (key == VK_6) {
+        else if (key == VK_6 || key == VK_NUMPAD6) {
             GUI.display.setText(GUI.display.getText() + "6");
         }
-        else if (key == VK_7) {
+        else if (key == VK_7 || key == VK_NUMPAD7) {
             GUI.display.setText(GUI.display.getText() + "7");
         }
-        else if (key == VK_8) {
+        else if (key == VK_8 || key == VK_NUMPAD8) {
             GUI.display.setText(GUI.display.getText() + "8");
         }
-        else if (key == VK_9) {
+        else if (key == VK_9 || key == VK_NUMPAD9) {
             GUI.display.setText(GUI.display.getText() + "9");
         }
     }
