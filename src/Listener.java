@@ -27,6 +27,7 @@ public class Listener implements ActionListener {
         }
     }
     protected static void equals() {
+        allowFurtherAction = true;
         secondExpression = Float.parseFloat(GUI.display.getText());
         switch (operation) {
             case 0:
@@ -65,7 +66,6 @@ public class Listener implements ActionListener {
                 action(3);
                 break;
             case "equal":
-                allowFurtherAction = true;
                 equals();
                 break;
             case "ac":
