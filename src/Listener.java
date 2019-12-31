@@ -104,7 +104,7 @@ public class Listener implements ActionListener {
                 delete();
                 break;
             case "percent":
-                firstExpression = Float.parseFloat(GUI.display.getText())/100;
+                firstExpression = Float.parseFloat(GUI.display.getText()) / 100;
                 GUI.display.setText(String.valueOf(firstExpression));
                 break;
 
@@ -113,8 +113,20 @@ public class Listener implements ActionListener {
                     GUI.display.setText(GUI.display.getText() + ".");
                 }
                 break;
+
+        }
             //number buttons
-            case "9":
+            if ( action.equals("9") || action.equals("8") || action.equals("7") || action.equals("6")
+                    || action.equals("5") || action.equals("4") || action.equals("3") || action.equals("2")
+                    || action.equals("1") || action.equals("0") ) {
+                GUI.display.setText(GUI.display.getText() + action);
+            }
+
+    }
+}
+
+/*
+case "9":
                 GUI.display.setText(GUI.display.getText() + "9");
                 break;
             case "8":
@@ -147,6 +159,4 @@ public class Listener implements ActionListener {
             default:
                 System.out.println("Action undefined, error!");
                 break;
-        }
-    }
-}
+ */
